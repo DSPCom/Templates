@@ -1,0 +1,159 @@
+%ARQUIVO DE PREAMBULO DA TESE - PACOTES E CONFIGURA\c{C}\~{O}ES
+
+\documentclass[
+	% -- op\c{c}\~{o}es da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% cap\'{\i}tulos come\c{c}am em p\'{a}g \'{\i}mpar (insere p\'{a}gina vazia caso preciso)
+	oneside,			% para impress\~{a}o em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel.
+	% -- op\c{c}\~{o}es da classe abntex2 --
+	%chapter=TITLE,		% t\'{\i}tulos de cap\'{\i}tulos convertidos em letras mai\'{u}sculas
+	%section=TITLE,		% t\'{\i}tulos de se\c{c}\~{o}es convertidos em letras mai\'{u}sculas
+	%subsection=TITLE,	% t\'{\i}tulos de subse\c{c}\~{o}es convertidos em letras mai\'{u}sculas
+	%subsubsection=TITLE,% t\'{\i}tulos de subsubse\c{c}\~{o}es convertidos em letras mai\'{u}sculas
+	% -- op\c{c}\~{o}es do pacote babel --
+	english,			% idioma adicional para hifeniza\c{c}\~{a}o
+	%french,			% idioma adicional para hifeniza\c{c}\~{a}o
+	%spanish,			% idioma adicional para hifeniza\c{c}\~{a}o
+	brazil,				% o \'{u}ltimo idioma \'{e} o principal do documento
+	sumario=tradicional,
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (convers\~{a}o autom\'{a}tica dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalogr\'{a}fica
+\usepackage{indentfirst}		% Indenta o primeiro par\'{a}grafo de cada se\c{c}\~{a}o.
+\usepackage{color}				% Controle das cores
+\usepackage[pdftex]{graphicx}	% Inclus\~{a}o de gr\'{a}ficos
+\usepackage{epstopdf}           % Pacote que converte as figuras em eps para pdf
+\usepackage{lipsum}             % Pacote que gera texto dummy
+\usepackage{blindtext}          % Pacote que gera texto dummy
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no \^{a}mbito do Modelo Can\^{o}nico do abnteX2
+% ---
+\usepackage{nomencl}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage[chapter]{algorithm}
+\usepackage{algorithmic}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pdfpages}
+% ---
+
+% ---
+% Pacotes de cita\c{c}\~{o}es
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as cita\c{c}\~{o}es na bibl
+\usepackage[alf,abnt-etal-cite=2,abnt-etal-list=0,abnt-etal-text=emph]{abntex2cite}	% Cita\c{c}\~{o}es padr\~{a}o ABNT
+
+% ---
+% Pacote de customiza\c{c}\~{a}o - Unicamp
+% ---
+\usepackage{unicamp}
+
+
+% ---
+% CONFIGURA\c{C}\~{O}ES DE PACOTES
+% ---
+
+% ---
+% Configura\c{c}\~{o}es do pacote backref
+% Usado sem a op\c{c}\~{a}o hyperpageref de backref
+\graphicspath{{./eps/}}
+\DeclareGraphicsExtensions{.eps}
+
+%customiza\c{c}\~{a}o do negrito em ambientes matem\'{a}ticos
+\newcommand{\mb}[1]{\mathbf{#1}}
+%customiza\c{c}\~{a}o de teoremas
+\newtheorem{mydef}{Defini\c{c}\~{a}o}[chapter]
+\newtheorem{lemm}{Lema}[chapter]
+\newtheorem{theorem}{Teorema}[chapter]
+\floatname{algorithm}{Pseudoc\'{o}digo}
+\renewcommand{\listalgorithmname}{Lista de Pseudoc\'{o}digos}
+
+
+\renewcommand{\backrefpagesname}{Citado na(s) p\'{a}gina(s):~}
+% Texto padr\~{a}o antes do n\'{u}mero das p\'{a}ginas
+\renewcommand{\backref}{}
+% Define os textos da cita\c{c}\~{a}o
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma cita\c{c}\~{a}o no texto.%
+	\or
+		Citado na p\'{a}gina #2.%
+	\else
+		Citado #1 vezes nas p\'{a}ginas #2.%
+	\fi}%
+% ---
+
+
+% ---
+% Configura\c{c}\~{o}es de apar\^{e}ncia do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informa\c{c}\~{o}es do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acad\^{e}mico},
+		hidelinks,					% desabilita as bordas dos links
+		colorlinks=false,       	% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=blue,
+%		linkbordercolor={1 1 1},	% set to white
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+
+% ---
+% Espa\c{c}amentos entre linhas e par\'{a}grafos
+% ---
+
+% O tamanho do par\'{a}grafo \'{e} dado por:
+\setlength{\parindent}{2cm}
+
+% Controle do espa\c{c}amento entre um par\'{a}grafo e outro:
+\setlength{\parskip}{0.2cm}  % tente tamb\'{e}m \onelineskip
+
+% ---
+% Informacoes de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{T\'{\i}tulo da Disserta\c{c}\~{a}o/Tese}
+\autor{Nome do Autor}
+\local{Campinas}
+\data{Ano da defesa}
+\orientador{Prof. Dr. Orientador}
+\coorientador[Co-orientador]{Prof. Dr. Co-orientador}
+\instituicao{%
+    UNIVERSIDADE ESTADUAL DE CAMPINAS
+    \par
+    Faculdade de Engenharia El\'{e}trica e de Computa\c{c}\~{a}o	
+    }
+%\tipotrabalho{Tese (Doutorado)}
+%% O preambulo deve conter o tipo do trabalho, o objetivo, o nome da institui\c{c}\~{a}o e a \'{a}rea de concentra\c{c}\~{a}o
+%\preambulo{Tese apresentada \`{a} Faculdade de Engenharia El\'{e}trica e de Computa\c{c}\~{a}o da Universidade Estadual de Campinas como parte dos requisitos exigidos para a obten\c{c}\~{a}o do t\'{\i}tulo de Doutor em Engenharia El\'{e}trica, na \'{A}rea de Engenharia de Computa\c{c}\~{a}o.}
+\tipotrabalho{Disserta\c{c}\~{a}o (Mestrado)}
+\preambulo{Disserta\c{c}\~{a}o apresentada \`{a} Faculdade de Engenharia El\'{e}trica e de Computa\c{c}\~{a}o da Universidade Estadual de Campinas como parte dos requisitos exigidos para a obten\c{c}\~{a}o do t\'{\i}tulo de Mestre em Engenharia El\'{e}trica, na \'{A}rea de xxx.}
+% --- 
